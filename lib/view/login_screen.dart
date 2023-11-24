@@ -15,7 +15,8 @@ class _LoginScreenState extends State<LoginScreen> {
         body: Center(
       child: InkWell(
         onTap: () {
-          Utils.toastmessage('Hello World');
+          Utils.flushBarErrorMessage('No internet connection', context);
+          // Utils.toastmessage('Hello World');
         },
         child: const Text('Click'),
       ),
