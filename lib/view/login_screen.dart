@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm_architecture/res/components/round_button.dart';
 import 'package:mvvm_architecture/utils/utils.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,6 +17,19 @@ class _LoginScreenState extends State<LoginScreen> {
 
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _emailcontroller.dispose();
+    _passwordcontroller.dispose();
+
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
+
+    _obsecurePassword.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,8 +95,23 @@ class _LoginScreenState extends State<LoginScreen> {
               },
             ),
             SizedBox(
-              height: height * .1,
+              height: height * .085,
             ),
+            RoundButton(
+              title: 'Login',
+              onPress: () {
+                if (_emailcontroller.text.isEmpty) {
+                  Utils.flushBarErrorMessage('Please enter email', context);
+                } else if (_passwordcontroller.text.isEmpty) {
+                  Utils.flushBarErrorMessage('Please enter password', context);
+                } else if (_passwordcontroller.text.length < 6) {
+                  Utils.flushBarErrorMessage(
+                      'Please enter 6 digit password', context);
+                } else {
+                  print('Api Hit');
+                }
+              },
+            )
           ],
         ),
       ),
