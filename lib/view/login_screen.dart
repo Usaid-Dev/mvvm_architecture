@@ -102,6 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             RoundButton(
               title: 'Login',
+              loading: authViewMode.loading,
               onPress: () {
                 if (_emailcontroller.text.isEmpty) {
                   Utils.flushBarErrorMessage('Please enter email', context);
