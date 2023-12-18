@@ -5,14 +5,14 @@ import 'package:mvvm_architecture/utils/utils.dart';
 import 'package:mvvm_architecture/view_model/auth_view_model.dart';
 import 'package:provider/provider.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   ValueNotifier<bool> _obsecurePassword = ValueNotifier<bool>(true);
 
   TextEditingController _emailcontroller = TextEditingController();
@@ -41,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Login',
+          'Signup',
           style: TextStyle(
             color: Colors.white,
           ),
@@ -102,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: height * .085,
             ),
             RoundButton(
-              title: 'Login',
+              title: 'SignUp',
               loading: authViewMode.loading,
               onPress: () {
                 if (_emailcontroller.text.isEmpty) {
@@ -127,9 +127,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             InkWell(
               onTap: () {
-                Navigator.pushNamed(context, RoutesName.signUp);
+                Navigator.pushNamed(context, RoutesName.login);
               },
-              child: Text("Don't have an account? SignUp"),
+              child: Text("Already have an account? Login"),
             )
           ],
         ),
