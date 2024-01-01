@@ -40,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final height = MediaQuery.of(context).size.height * 1;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: const Text(
           'Login',
           style: TextStyle(
@@ -113,10 +114,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   Utils.flushBarErrorMessage(
                       'Please enter 6 digit password', context);
                 } else {
+                  // Map data = {
+                  //   'email': _emailcontroller.text.toString(),
+                  //   'password': _passwordcontroller.text.toString(),
+                  // };
+
                   Map data = {
-                    'email': _emailcontroller.text.toString(),
-                    'password': _passwordcontroller.text.toString(),
+                    'email': 'eve.holt@reqres.in',
+                    'password': 'cityslicka',
                   };
+
                   authViewMode.loginApi(data, context);
                   print('Api Hit');
                 }
