@@ -15,19 +15,31 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final userPreference = Provider.of<UserViewModel>(context);
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
+      appBar: AppBar(
+        backgroundColor: Colors.blue,
+        automaticallyImplyLeading: false,
+        actions: [
           InkWell(
             onTap: () {
               userPreference.remove().then((value) => {
                     Navigator.pushNamed(context, RoutesName.login),
                   });
             },
-            child: const Text('LogOut'),
+            child: const Text(
+              'LogOut',
+              style: TextStyle(color: Colors.white),
+            ),
           ),
+          const SizedBox(
+            width: 20,
+          )
         ],
+      ),
+      body: const Center(
+        child: Text(
+          'Hello World',
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }
